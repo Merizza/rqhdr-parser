@@ -11,7 +11,7 @@ app.get("/", function(req, res) {
 
 app.get("/api/whoami", function(req, res) {
   res.json({
-    "ip": req.header("x-forwarded-for") || req.header('host'),
+    "ip": req.header("x-forwarded-for").split(',')[0] || req.header('host'),
     "language": req.header("accept-language").split(',')[0],
     "software": req.header("user-agent").split('(')[1].split(')')[0]
  });
